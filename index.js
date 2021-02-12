@@ -1,31 +1,32 @@
-// Your code here
-class Polygon {
-    constructor(array) {
-        this.array = array
+// Write your classes here
+class Tree {
+    constructor(species) {
+        this.species = species
     }
 
-    get countSides() {
-        return this.array.length
-    }
-
-    get perimeter() {
-        return this.array.reduce((acc, cur) => acc + cur)
+    static definition() {
+        return "A tree is a perennial plant with an elongated stem, or trunk, supporting branches and leaves."
     }
 }
 
-class Triangle extends Polygon {
-    get isValid() {
-        if (this.countSides !== 3) return
-        return ((this.array[0] + this.array[1] >= this.array[2]) && (this.array[0] + this.array[2] >= this.array[1]) && (this.array[1] + this.array[2] >= this.array[0])) 
+class Deciduous extends Tree {
+    constructor(species, name) {
+        super(species)
+        this.name = name
+    }
+
+    static definition() {
+        return `${super.definition()} Deciduous trees shed their leaves annually.` 
     }
 }
 
-class Square extends Polygon {
-    get isValid() {
-        if (this.countSides !== 4) return
-        return ((this.array[0] === this.array[1]) && (this.array[1] === this.array[2]) && (this.array[2] === this.array[3]))
+class Evergreen extends Tree {
+    constructor(species, name) {
+        super(species)
+        this.name = name
     }
-    get area() {
-        return this.array[0] * this.array[1]
+
+    static definition() {
+        return `${super.definition()} Evergreens keep their leaves all year round.`
     }
 }
